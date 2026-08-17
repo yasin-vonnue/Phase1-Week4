@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Sales Chart</title>
+
+    <meta
+      name="description"
+      content="Interactive 12-month sales chart built with the HTML Canvas API."
+    />
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sales Dashboard</h1>
+    </header>
+
+    <main>
+      <section class="chart-section" aria-labelledby="chart-title">
+        <h2 id="chart-title">12-Month Sales</h2>
+
+        <div class="chart-wrapper">
+          <canvas
+            id="sales-chart"
+            data-canvas-chart
+            width="1000"
+            height="600"
+            aria-label="12-month sales bar chart"
+            role="img"
+          >
+            Your browser does not support the HTML canvas element.</canvas
+          >
+
+          <div
+            id="chart-tooltip"
+            class="chart-tooltip"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
+        </div>
+
+        <button type="button" id="export-chart">Export Chart as PNG</button>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
