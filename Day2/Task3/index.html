@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History, URL & Navigation APIs</title>
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>History, URL & Navigation APIs</h1>
+
+      <nav aria-label="Main navigation">
+        <a href="/" data-route="/">Home</a>
+        <a href="/products" data-route="/products">Products</a>
+        <a href="/about" data-route="/about">About</a>
+      </nav>
+    </header>
+
+    <div id="breadcrumb" aria-label="Breadcrumb"></div>
+
+    <main id="app">
+      <section data-page="/">
+        <h2>Home</h2>
+        <p>This is the home section.</p>
+      </section>
+
+      <section data-page="/products" hidden>
+        <h2>Products</h2>
+
+        <label for="category-filter"> Category </label>
+
+        <select id="category-filter">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="books">Books</option>
+          <option value="clothing">Clothing</option>
+        </select>
+
+        <p id="filter-status" aria-live="polite"></p>
+      </section>
+
+      <section data-page="/about" hidden>
+        <h2>About</h2>
+        <p>This is the about section.</p>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
