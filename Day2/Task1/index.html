@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storage Deep Dive</title>
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Storage Deep Dive</h1>
+      <p>Exploring localStorage, sessionStorage, and IndexedDB</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="local-storage-title">
+        <h2 id="local-storage-title">localStorage</h2>
+
+        <button type="button" id="local-set">Set localStorage Item</button>
+
+        <button type="button" id="local-get">Get localStorage Item</button>
+
+        <p id="local-output" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="session-storage-title">
+        <h2 id="session-storage-title">sessionStorage</h2>
+
+        <button type="button" id="session-set">Set sessionStorage Item</button>
+
+        <button type="button" id="session-get">Get sessionStorage Item</button>
+
+        <p id="session-output" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="storage-manager-title">
+        <h2 id="storage-manager-title">Storage Manager</h2>
+
+        <button type="button" id="storage-set">Set TTL Item</button>
+
+        <button type="button" id="storage-get">Get TTL Item</button>
+
+        <button type="button" id="storage-delete">Delete TTL Item</button>
+
+        <button type="button" id="storage-clear">Clear Storage</button>
+
+        <p id="storage-output" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="indexed-db-title">
+        <h2 id="indexed-db-title">IndexedDB</h2>
+
+        <button type="button" id="indexed-db-create">Create Database</button>
+
+        <button type="button" id="indexed-db-add">Add Record</button>
+
+        <button type="button" id="indexed-db-read">Read Record</button>
+
+        <p id="indexed-db-output" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
