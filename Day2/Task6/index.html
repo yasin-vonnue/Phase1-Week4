@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
+    <title>Performance PWA</title>
+
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Performance PWA</h1>
+
+      <p>Web App Manifest & Progressive Web App</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Install Application</h2>
+
+        <p id="install-status">Checking installation availability...</p>
+
+        <button type="button" id="install-button" hidden>Install App</button>
+      </section>
+
+      <section>
+        <h2>PWA Features</h2>
+
+        <ul>
+          <li>Web App Manifest</li>
+          <li>Standalone display mode</li>
+          <li>Custom installation prompt</li>
+          <li>Installabel application icons</li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
