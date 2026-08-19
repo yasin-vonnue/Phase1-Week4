@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Performance APIs</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Performance APIs</h1>
+      <p>
+        Benchmarking, PerformanceObserver, performance marks & Network
+        Information
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="benchmark-title">
+        <h2 id="benchmark-title">DOM vs Virtual Scroll Benchmark</h2>
+
+        <button type="button" id="run-benchmark">Run Benchmark</button>
+
+        <p id="benchmark-status" aria-live="polite"></p>
+
+        <div class="benchmark-output">
+          <div>
+            <h3>Normal DOM</h3>
+            <div id="normal-list"></div>
+          </div>
+
+          <div>
+            <h3>Virtual Scroll</h3>
+            <div id="virtual-list" class="virtual-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="observer-title">
+        <h2 id="observer-title">PerformanceObserver</h2>
+
+        <p>Open the Console to see LCP and CLS performance entries.</p>
+
+        <div id="performance-status" aria-live="polite"></div>
+      </section>
+
+      <section aria-labelledby="marks-title">
+        <h2 id="marks-title">Performance Marks</h2>
+
+        <p>
+          The portfolio initialization function is instrumented with performance
+          marks.
+        </p>
+
+        <p id="init-performance" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="connection-title">
+        <h2 id="connection-title">Network Connection</h2>
+
+        <p id="connection-status"></p>
+
+        <div id="animated-demo" class="animated-demo">Animation Demo</div>
+
+        <button type="button" id="autoplay-demo">Autoplay Demo</button>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
