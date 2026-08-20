@@ -1,0 +1,23 @@
+import { initNavigation } from "./components/nav.js";
+import { initDarkMode } from "./components/darkMode.js";
+import { initAccordion } from "./components/accordion.js";
+import { initLightbox } from "./components/lightbox.js";
+import { initScrollAnimations } from "./components/scrollAnimations.js";
+import { initBackToTop } from "./components/backToTop.js";
+import { initReadingProgress } from "./components/readingProgress.js";
+import { initContactFormValidation } from "./components/formValidator.js";
+import { initServicesAPI } from "./components/serviceApi.js";
+import { initTeamAPI } from "./components/teamApi.js";
+import { initHomeNewAPI } from "./components/homeNewApi.js";
+
+initNavigation();
+initDarkMode();
+initAccordion();
+initLightbox();
+initScrollAnimations();
+initBackToTop();
+initReadingProgress();
+initContactFormValidation();
+initServicesAPI();
+initTeamAPI();
+initHomeNewAPI();
