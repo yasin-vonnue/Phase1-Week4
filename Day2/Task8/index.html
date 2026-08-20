@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation Performance</title>
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Animation Performance</h1>
+
+      <p>requestAnimationFrame and rendering performance</p>
+    </header>
+
+    <main>
+      <section class="demo-section">
+        <h2>1. rAF Count-Up Animation</h2>
+
+        <p id="count-value" class="count-value">0</p>
+
+        <button type="button" id="count-button">Start Count-Up</button>
+      </section>
+
+      <section class="demo-section">
+        <h2>2. rAF Upload Progress</h2>
+
+        <div class="progress-container" aria-label="Upload progress">
+          <div id="upload-progress" class="progress-bar"></div>
+        </div>
+
+        <p id="upload-status">Ready to upload.</p>
+
+        <button type="button" id="upload-button">Start Upload</button>
+      </section>
+
+      <section class="demo-section">
+        <h2>3. will-change</h2>
+
+        <div id="will-change-box" class="animation-box">
+          will-change: transform
+        </div>
+
+        <button type="button" id="will-change-button">Animate</button>
+      </section>
+
+      <section class="demo-section">
+        <h2>4. Layout Vs Compositor</h2>
+
+        <div class="comparison-area">
+          <div id="left-box" class="comparison-box">left/top</div>
+
+          <div id="transform-box" class="comparison-box">transform</div>
+        </div>
+
+        <div class="comparison-buttons">
+          <button type="button" id="layout-button">Animate left/top</button>
+
+          <button type="button" id="transform-button">Animate transform</button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
