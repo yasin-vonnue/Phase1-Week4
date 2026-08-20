@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Clipboard, Notifications & Geolocation</title>
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Browser APIs</h1>
+      <p>Clipboard, Notifications, Geolocation & Web Share</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="clipboard-title">
+        <h2 id="clipboard-title">Clipboard API</h2>
+
+        <pre><code>
+const greeting = "Hello from the Clipboard API!";
+console.log(greeting);
+        </code></pre>
+
+        <button type="button" class="copy-code">Copy Code</button>
+
+        <p class="copy-status" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="notification-title">
+        <h2 id="notification-title">Notifications API</h2>
+
+        <button type="button" id="notification-permission">
+          Enable Notifications
+        </button>
+
+        <p id="notification-status" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact Form</h2>
+
+        <form id="contact-form">
+          <div>
+            <label for="name"> Name </label>
+
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="email"> Email </label>
+
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="location"> Location </label>
+
+            <input
+              type="text"
+              id="location"
+              name="location"
+              placeholder="Detecting location..."
+              readonly
+            />
+          </div>
+
+          <button type="submit">Submit</button>
+
+          <p id="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section aria-labelledby="share-title">
+        <h2 id="share-title">Web Share API</h2>
+
+        <button type="button" id="share-button">Share This Page</button>
+
+        <p id="share-status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

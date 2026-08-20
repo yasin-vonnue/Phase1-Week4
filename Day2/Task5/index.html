@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Worker - Offline Caching</title>
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Service Worker Offline Demo</h1>
+      <p>Cache-first static assets and network-first API requests</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Offline Caching</h2>
+
+        <p id="status" aria-live="polite">Checking service worker status...</p>
+
+        <button type="button" id="api-button">Fetch API Data</button>
+
+        <p id="api-status" aria-live="polite"></p>
+      </section>
+
+      <section>
+        <h2>Cached Image</h2>
+
+        <img
+          src="./images/offline-demo.jpg"
+          alt="Offline caching demonstration"
+          width="400"
+          height="250"
+        />
+      </section>
+    </main>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
