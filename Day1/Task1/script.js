@@ -2,21 +2,21 @@
 
 // 1. pipe - left to right
 
-const pipe = (...functions) => {
+export const pipe = (...functions) => {
   return (initialValue) => {
     return functions.reduce((value, fn) => fn(value), initialValue);
   };
 };
 
 // 2. compose - right to left
-const compose = (...functions) => {
+export const compose = (...functions) => {
   return (initialValue) => {
     return functions.reduceRight((value, fn) => fn(value), initialValue);
   };
 };
 
 // 3. curry - converts multi-argument function into unary chain
-const curry = (fn) => {
+export const curry = (fn) => {
   const curried = (...args) => {
     if (args.length >= fn.length) {
       return fn(...args);
@@ -29,7 +29,7 @@ const curry = (fn) => {
 };
 
 // 4. partial - presets some arguments
-const partial = (fn, ...presetArgs) => {
+export const partial = (fn, ...presetArgs) => {
   return (...remainingArgs) => {
     return fn(...presetArgs, ...remainingArgs);
   };
