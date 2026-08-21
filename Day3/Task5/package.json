@@ -1,0 +1,17 @@
+{
+  "name": "task5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jsdom": "^30.0.1",
+    "vitest": "^4.1.11"
+  }
+}
