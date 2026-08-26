@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeakMap & Memory Management</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>WeakMap & Memory Management</h1>
+
+      <section>
+        <h2>1. Map Memory Leak</h2>
+
+        <button id="create-map">Create DOM Nodes</button>
+
+        <button id="remove-map">Remove DOM Nodes</button>
+
+        <button id="clear-map">Clear Map</button>
+
+        <p id="map-status">Map entries: 0</p>
+      </section>
+
+      <section>
+        <h2>2. WeakMap</h2>
+
+        <button id="create-weakmap">Create DOM Nodes</button>
+
+        <button id="remove-weakmap">Remove DOM Nodes</button>
+
+        <p id="weakmap-status">WeakMap demo ready</p>
+      </section>
+
+      <section>
+        <h2>3. Private Class Data</h2>
+
+        <button id="create-user">Create User</button>
+
+        <button id="show-user">Show Private Data</button>
+
+        <p id="user-status">No user created</p>
+      </section>
+
+      <section id="demo-area">
+        <h2>DOM Nodes</h2>
+
+        <div id="nodes"></div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
