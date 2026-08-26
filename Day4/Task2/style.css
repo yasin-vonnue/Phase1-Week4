@@ -1,0 +1,28 @@
+.counter-demo {
+  text-align: center;
+}
+
+#counter {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.particle-demo {
+  text-align: center;
+}
+
+#particle-canvas {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+.particle-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 20px;
+}
