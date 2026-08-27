@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-bg: #fff;
+  --color-text: #1f2937;
+  --font-primary: "Inter", sans-serif;
+  --radius: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  padding: 0.5rem 1rem;
+  background: var(--color-secondary);
+  color: var(--color-bg);
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--color-secondary);
+}
+
+.logo img {
+  height: 45px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 70px);
+  color: white;
+  text-align: center;
+  background:
+    linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)),
+    url("../images/hero-optimized-2.webp") center / cover no-repeat;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+}
+
+.hero-content p {
+  margin-top: 1rem;
+}
+
