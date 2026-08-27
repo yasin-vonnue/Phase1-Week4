@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Charts</title>
+  </head>
+  <body>
+    <main>
+      <h2>Canvas Sales Chart</h2>
+
+      <section class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h2>Monthly Sales</h2>
+            <p>Bar Chart with average target</p>
+          </div>
+
+          <button type="button" id="export-chart">Export PNG</button>
+        </div>
+
+        <div class="chart-wrapper">
+          <canvas id="sales-chart" width="1000" height="600"></canvas>
+
+          <div id="tooltip" class="tooltip" hidden></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

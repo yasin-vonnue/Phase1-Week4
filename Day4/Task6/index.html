@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Workers - Off Main Thread</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Web Workers Demo</h1>
+
+      <p>Sorting 100,000 objects with and without a Web Worker.</p>
+
+      <section class="controls">
+        <button type="button" id="worker-sort">Sort with Web Worker</button>
+
+        <button type="button" id="main-sort">Sort on Main Thread</button>
+      </section>
+
+      <section class="status">
+        <h2>Status</h2>
+
+        <p id="status">Ready.</p>
+
+        <p id="timer">UI responsiveness timer: 0 ms</p>
+      </section>
+
+      <section>
+        <h2>Sorted Results</h2>
+
+        <pre id="results">No results yet.</pre>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

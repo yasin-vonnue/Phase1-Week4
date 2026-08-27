@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation Loop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="counter-demo">
+      <h2>requestAnimationFrame Counter</h2>
+
+      <p id="counter">0</p>
+
+      <button type="button" id="start-counter">Start Counter</button>
+    </section>
+
+    <section class="particle-demo">
+      <h2>Particle System</h2>
+
+      <canvas id="particle-canvas" width="800" height="400"></canvas>
+
+      <div class="particle-controls">
+        <button type="button" id="pause-particles">Pause</button>
+
+        <button type="button" id="resume-particles">Resume</button>
+      </div>
+    </section>
+    <script src="main.js"></script>
+  </body>
+</html>
