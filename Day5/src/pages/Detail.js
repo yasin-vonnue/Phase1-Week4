@@ -1,9 +1,13 @@
-export function renderDetail(params) {
+export function renderDetailPage(params) {
   const section = document.createElement("section");
 
-  section.innerHTML = `
-    <h1>Task Detail</h1>
-    <p>Task ID: ${params.id}</p>`;
+  const heading = document.createElement("h1");
+  heading.textContent = "Task Detail";
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = `Task ID: ${params.id}`;
+
+  section.append(heading, paragraph);
 
   return section;
 }

@@ -4,10 +4,10 @@ import { reducer } from "./state/reducer.js";
 
 import { register, navigate, initRouter } from "./router.js";
 
-import { renderHome } from "./pages/Home.js";
-import { renderList } from "./pages/List.js";
-import { renderDetail } from "./pages/Detail.js";
-import { renderSettings } from "./pages/Settings.js";
+import { renderHomePage } from "./pages/Home.js";
+import { renderListPage } from "./pages/List.js";
+import { renderDetailPage } from "./pages/Detail.js";
+import { renderSettingsPage } from "./pages/Settings.js";
 
 const store = createStore(initialState, reducer);
 
@@ -17,10 +17,10 @@ store.subscribe(() => {
 
 const app = document.querySelector("#app");
 
-register("/home", renderHome);
-register("/list", renderList);
-register("/detail/:id", renderDetail);
-register("/settings", renderSettings);
+register("/home", renderHomePage);
+register("/list", renderListPage);
+register("/detail/:id", renderDetailPage);
+register("/settings", renderSettingsPage);
 
 initRouter({
   root: app,

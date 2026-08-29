@@ -1,8 +1,10 @@
-export function renderSettings() {
+export function renderSettingsPage() {
   const section = document.createElement("section");
 
-  section.innerHTML = `
-    <h1>Settings</h1>`;
+  const heading = document.createElement("h1");
+  heading.textContent = "Settings";
+
+  section.append(heading);
 
   return section;
 }
