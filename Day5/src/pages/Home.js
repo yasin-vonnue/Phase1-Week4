@@ -1,6 +1,8 @@
 export function renderHomePage() {
   const section = document.createElement("section");
 
+  section.className = "page";
+
   const heading = document.createElement("h1");
   heading.textContent = "Home";
 

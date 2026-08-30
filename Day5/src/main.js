@@ -1,6 +1,8 @@
 import { createStore } from "./state/store.js";
 import { initialState } from "./state/initialState.js";
 import { reducer } from "./state/reducer.js";
+import { storageMiddleware, loadState } from "./state/storageMiddleware.js";
+import { loadTasks, loadTasksWithError } from "./state/taskActions.js";
 
 import { register, navigate, initRouter } from "./router.js";
 
@@ -9,11 +11,18 @@ import { renderListPage } from "./pages/List.js";
 import { renderDetailPage } from "./pages/Detail.js";
 import { renderSettingsPage } from "./pages/Settings.js";
 
-const store = createStore(initialState, reducer);
+const savedState = loadState();
 
-store.subscribe(() => {
-  console.log("Route state changed:", store.getState().route);
-});
+const store = createStore(
+  {
+    ...initialState,
+    ...savedState,
+    loading: false,
+    error: null,
+  },
+  reducer,
+  storageMiddleware,
+);
 
 const app = document.querySelector("#app");
 
@@ -48,6 +57,71 @@ document.addEventListener("click", (event) => {
 
   navigate(path);
 });
+
+loadTasks(store.dispatch);
+
+console.log("Initial state:", store.getState());
+
+// const newTask = {
+//   id: "2",
+//   title: "Learn CSS",
+//   description: "Practice animations",
+//   completed: false,
+// };
+
+// store.dispatch({
+//   type: "ADD_TASK",
+//   payload: newTask,
+// });
+
+// console.log("After ADD:", store.getState().tasks);
+
+// store.dispatch({
+//   type: "UPDATE_TASK",
+//   payload: {
+//     id: "2",
+//     title: "Learn Advanced CSS",
+//   },
+// });
+
+// console.log("After UPDATE:", store.getState().tasks);
+
+// store.dispatch({
+//   type: "TOGGLE_TASK",
+//   payload: "2",
+// });
+
+// console.log("After TOGGLE:", store.getState().tasks);
+
+// store.dispatch({
+//   type: "DELETE_TASK",
+//   payload: "2",
+// });
+
+// console.log("After DELETE:", store.getState().tasks);
+
+// store.dispatch({
+//   type: "ADD_TASK",
+//   payload: {
+//     id: "3",
+//     title: "Learn Testing",
+//     description: "Practice Vitest",
+//     completed: false,
+//   },
+// });
+
+// store.dispatch({
+//   type: "UPDATE_TASK",
+//   payload: {
+//     id: "3",
+//     title: "Learn Advanced Testing",
+//   },
+// });
+
+// store.dispatch({
+//   type: "DELETE_TASK",
+//   payload: "3",
+// });
 
 // console.log("Store: ", store.getState());
 // console.log("Routes registered successfully");

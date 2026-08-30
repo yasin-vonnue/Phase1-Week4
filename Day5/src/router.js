@@ -57,7 +57,7 @@ function renderRoute(match) {
 
   outlet.innerHTML = "";
 
-  const element = match.component(match.params);
+  const element = match.component(match.params, store);
 
   if (element) {
     outlet.append(element);
@@ -87,8 +87,6 @@ export function navigate(path, options = {}) {
       params: match.params,
     },
   });
-
-  renderRoute(match);
 }
 
 function handlePopState() {
@@ -108,8 +106,6 @@ function handlePopState() {
       params: match.params,
     },
   });
-
-  renderRoute(match);
 }
 
 export function initRouter({ root, stateStore }) {
@@ -117,4 +113,14 @@ export function initRouter({ root, stateStore }) {
   store = stateStore;
 
   window.addEventListener("popstate", handlePopState);
+
+  store.subscribe(() => {
+    const path = `${window.location.pathname}${window.location.search}`;
+
+    const match = matchRoute(path);
+
+    if (match) {
+      renderRoute(match);
+    }
+  });
 }

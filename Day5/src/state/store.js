@@ -1,4 +1,4 @@
-export function createStore(initialState, reducer) {
+export function createStore(initialState, reducer, middleware) {
   let state = initialState;
   const listeners = new Set();
 
@@ -6,12 +6,22 @@ export function createStore(initialState, reducer) {
     return state;
   }
 
-  function dispatch(action) {
+  function baseDispatch(action) {
     state = reducer(state, action);
 
     listeners.forEach((listener) => {
       listener();
     });
+
+    return action;
+  }
+
+  let dispatch = baseDispatch;
+
+  if (middleware) {
+    dispatch = middleware({
+      getState,
+    })(baseDispatch);
   }
 
   function subscribe(listener) {
