@@ -9,7 +9,18 @@ describe("List Page", () => {
     document.body.innerHTML = "";
 
     store = {
+      getState: vi.fn(() => ({
+        tasks: [
+          {
+            id: "1",
+            title: "Learn JavaScript",
+            description: "Practice DOM manipulation and modules.",
+            completed: false,
+          },
+        ],
+      })),
       dispatch: vi.fn(),
+      subscribe: vi.fn(() => vi.fn()),
     };
   });
 
@@ -40,7 +51,7 @@ describe("List Page", () => {
     expect(button.textContent).toBe("Add Task");
   });
 
-  test("renders the task card and delete modal", () => {
+  test("renders the task card and actions", () => {
     const page = renderListPage({}, store);
 
     document.body.append(page);
@@ -49,10 +60,11 @@ describe("List Page", () => {
     expect(page.textContent).toContain(
       "Practice DOM manipulation and modules.",
     );
-    expect(page.textContent).toContain("Delete Task");
-    expect(page.textContent).toContain(
-      "Are you sure you want to delete this task?",
-    );
+
+    expect(page.textContent).toContain("Completed");
+    expect(page.textContent).toContain("View");
+    expect(page.textContent).toContain("Edit");
+    expect(page.textContent).toContain("Delete");
   });
 
   test("dispatches ADD_TASK when a valid task is submitted", () => {

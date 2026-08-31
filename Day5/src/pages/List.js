@@ -1,20 +1,16 @@
 import { Button } from "../components/Button.js";
 import { Card } from "../components/Card.js";
-import { Modal } from "../components/Modal.js";
 
 export function renderListPage(params, store) {
   const section = document.createElement("section");
-
   section.className = "page";
 
   const heading = document.createElement("h1");
-
   heading.textContent = "Task List";
 
   const form = document.createElement("form");
 
   const input = document.createElement("input");
-
   input.type = "text";
   input.name = "title";
   input.placeholder = "Enter task title";
@@ -27,6 +23,107 @@ export function renderListPage(params, store) {
   submitButton.type = "submit";
 
   form.append(input, submitButton);
+
+  const taskList = document.createElement("div");
+  taskList.className = "task-list";
+
+  function renderTasks() {
+    taskList.innerHTML = "";
+
+    const tasks = store.getState().tasks || [];
+
+    if (tasks.length === 0) {
+      const emptyMessage = document.createElement("p");
+      emptyMessage.textContent = "No tasks yet.";
+      taskList.append(emptyMessage);
+      return;
+    }
+
+    tasks.forEach((task) => {
+      const card = Card({
+        title: task.title,
+        content: task.description || "",
+      });
+
+      card.classList.add("task-card");
+
+      const status = document.createElement("label");
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = task.completed;
+
+      checkbox.addEventListener("change", () => {
+        store.dispatch({
+          type: "TOGGLE_TASK",
+          payload: task.id,
+        });
+
+        renderTasks();
+      });
+
+      status.append(checkbox, " Completed");
+
+      const viewLink = document.createElement("a");
+      viewLink.href = `#/detail/${encodeURIComponent(task.id)}`;
+      viewLink.dataset.link = "";
+      viewLink.textContent = "View";
+
+      const editButton = Button({
+        text: "Edit",
+      });
+
+      editButton.type = "button";
+
+      editButton.addEventListener("click", () => {
+        const newTitle = window.prompt("Edit task title:", task.title);
+
+        if (!newTitle || !newTitle.trim()) {
+          return;
+        }
+
+        store.dispatch({
+          type: "UPDATE_TASK",
+          payload: {
+            id: task.id,
+            title: newTitle.trim(),
+          },
+        });
+
+        renderTasks();
+      });
+
+      const deleteButton = Button({
+        text: "Delete",
+      });
+
+      deleteButton.type = "button";
+
+      deleteButton.addEventListener("click", () => {
+        const confirmed = window.confirm(`Delete "${task.title}"?`);
+
+        if (!confirmed) {
+          return;
+        }
+
+        store.dispatch({
+          type: "DELETE_TASK",
+          payload: task.id,
+        });
+
+        renderTasks();
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "task-actions";
+
+      actions.append(viewLink, editButton, deleteButton);
+
+      card.append(status, actions);
+
+      taskList.append(card);
+    });
+  }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -50,19 +147,13 @@ export function renderListPage(params, store) {
     });
 
     input.value = "";
+
+    renderTasks();
   });
 
-  const taskCard = Card({
-    title: "Learn JavaScript",
-    content: "Practice DOM manipulation and modules.",
-  });
+  section.append(heading, form, taskList);
 
-  const modal = Modal({
-    title: "Delete Task",
-    content: "Are you sure you want to delete this task?",
-  });
-
-  section.append(heading, form, taskCard, modal);
+  renderTasks();
 
   return section;
 }
