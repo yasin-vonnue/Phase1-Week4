@@ -87,6 +87,8 @@ export function navigate(path, options = {}) {
       params: match.params,
     },
   });
+
+  renderRoute(match);
 }
 
 function handlePopState() {
