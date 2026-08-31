@@ -1,5 +1,6 @@
 import { Button } from "../components/Button.js";
 import { Card } from "../components/Card.js";
+import { navigate } from "../router.js";
 
 export function renderListPage(params, store) {
   const section = document.createElement("section");
@@ -64,10 +65,15 @@ export function renderListPage(params, store) {
 
       status.append(checkbox, " Completed");
 
-      const viewLink = document.createElement("a");
-      viewLink.href = `#/detail/${encodeURIComponent(task.id)}`;
-      viewLink.dataset.link = "";
-      viewLink.textContent = "View";
+      const viewButton = Button({
+        text: "View",
+      });
+
+      viewButton.type = "button";
+
+      viewButton.addEventListener("click", () => {
+        navigate(`/detail/${encodeURIComponent(task.id)}`);
+      });
 
       const editButton = Button({
         text: "Edit",
@@ -117,7 +123,7 @@ export function renderListPage(params, store) {
       const actions = document.createElement("div");
       actions.className = "task-actions";
 
-      actions.append(viewLink, editButton, deleteButton);
+      actions.append(viewButton, editButton, deleteButton);
 
       card.append(status, actions);
 
