@@ -11,7 +11,8 @@ export function register(path, component) {
 }
 
 export function matchRoute(path) {
-  const pathname = path.split("?")[0];
+  const cleanPath = path.replace(/^#/, "");
+  const pathname = cleanPath.split("?")[0];
 
   const pathSegments = pathname.split("/").filter(Boolean);
 
@@ -75,9 +76,9 @@ export function navigate(path, options = {}) {
   }
 
   if (replace) {
-    window.history.replaceState({}, "", path);
+    window.location.replace(`#${path}`);
   } else {
-    window.history.pushState({}, "", path);
+    window.location.hash = path;
   }
 
   store.dispatch({
@@ -91,8 +92,8 @@ export function navigate(path, options = {}) {
   renderRoute(match);
 }
 
-function handlePopState() {
-  const path = `${window.location.pathname}${window.location.search}`;
+function handleHashChange() {
+  const path = window.location.hash.slice(1) || "/home";
 
   const match = matchRoute(path);
 
@@ -108,21 +109,29 @@ function handlePopState() {
       params: match.params,
     },
   });
+
+  renderRoute(match);
 }
 
 export function initRouter({ root, stateStore }) {
   outlet = root;
   store = stateStore;
 
-  window.addEventListener("popstate", handlePopState);
+  window.addEventListener("hashchange", handleHashChange);
 
-  store.subscribe(() => {
-    const path = `${window.location.pathname}${window.location.search}`;
+  const path = window.location.hash.slice(1) || "/home";
 
-    const match = matchRoute(path);
+  const match = matchRoute(path);
 
-    if (match) {
-      renderRoute(match);
-    }
-  });
+  if (match) {
+    store.dispatch({
+      type: "ROUTE_CHANGED",
+      payload: {
+        path,
+        params: match.params,
+      },
+    });
+
+    renderRoute(match);
+  }
 }

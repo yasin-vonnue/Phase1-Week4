@@ -6,6 +6,8 @@ describe("Router", () => {
   beforeEach(() => {
     document.body.innerHTML = '<div id="app"></div>';
 
+    window.location.hash = "";
+
     const store = {
       state: {
         route: {
@@ -56,7 +58,7 @@ describe("Router", () => {
     expect(app.textContent).toContain("Home Page");
   });
 
-  test("updates the URL when navigating", () => {
+  test("updates the hash when navigating", () => {
     const listComponent = () => {
       const element = document.createElement("div");
 
@@ -69,7 +71,7 @@ describe("Router", () => {
 
     navigate("/list");
 
-    expect(window.location.pathname).toBe("/list");
+    expect(window.location.hash).toBe("#/list");
   });
 
   test("extracts dynamic route parameters", () => {
@@ -89,6 +91,6 @@ describe("Router", () => {
 
     expect(app.textContent).toContain("Task 42");
 
-    expect(window.location.pathname).toBe("/detail/42");
+    expect(window.location.hash).toBe("#/detail/42");
   });
 });
